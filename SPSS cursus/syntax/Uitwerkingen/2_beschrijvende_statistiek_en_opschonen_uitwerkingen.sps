@@ -52,13 +52,11 @@
 *       kopieer dan de uitwerking van les 1 naar je syntax-map.
 *  2. In het GET FILE commando in deze syntax, verander de bestandsnaam in:
 *       'I:\SPSS cursus\SPSS cursus\data\Brondata\2019-01-02_pat_tevr.sav'.
-* 3. Selecteer alle syntax (Control+a) en voer deze uit (Control+r).
+* 3. Selecteer alle syntax (Ctrl+a) en voer deze uit (Ctrl+r).
 
-* NB: Bij het opslaan geven we het bestand geen nieuwe naam. Het oude bestand (pat_tevr_met_metadata)
-*  wordt dus overschreven. Dat is niet erg, want dat bestand kunnen we altijd reproduceren met het originele
-*  bronbestand en de bijbehorende syntax.
 
-INSERT FILE='I:\SPSS cursus\SPSS cursus\syntax\uitwerkingen\1_openen_opslaan_omschrijven_incl_uitwerkingen_meer_data.sps'.
+
+* INSERT FILE='I:\SPSS cursus\SPSS cursus\syntax\uitwerkingen\1_openen_opslaan_omschrijven_incl_uitwerkingen_meer_data.sps'.
 
 
 
@@ -102,7 +100,7 @@ DATASET NAME patient_tevr WINDOW=FRONT.
 
 * Bij beschrijvende statistiek kan je bijvoorbeeld denken aan:
 *  het maken van frequentietabellen (FREQUENCIES) voor NOMINALE en ORDINALE variabelen,
-*  en het uitdraaien van DESCRIPTIVES (gemiddelde, minimum, maximum etc.) voor SCALE variabelen.
+*  en het uitdraaien van gemiddelde, minimum, maximum etc. voor SCALE variabelen.
 
 * Meestal is er een voortdurende wisselwerking tussen beschrijvende statistiek en het opschonen van je data.
 *  Je gebruikt eerst beschrijvende statistiek om problemen/fouten in je data op te sporen, dan schoon je deze
@@ -286,20 +284,21 @@ MISSING VALUES opleidingsniveau (-99).
 
 
 
-*!!!!! SCALE variabele ---> gebruik DESCRIPTIVES, EXAMINE (en evt. FREQUENCIES) commando!!!!!.
+*!!!!! SCALE variabele ---> gebruik MEANS, EXAMINE (en evt. FREQUENCIES) commando!!!!!.
 
-* Om variabelen op het SCALE meetniveau te inspecteren kan je beginnen met het commando DESCRIPTIVES.
-* DESCRIPTIVES is net zo simpel als FREQUENCIES, je gebruikt het zo:
-DESCRIPTIVES naam_van_variabele.
+* Om variabelen op het SCALE meetniveau te inspecteren kan je beginnen met het commando MEANS.
+* MEANS is bijna net zo simpel als FREQUENCIES, je gebruikt het zo:
+MEANS naam_van_variabele
+ /CELLS COUNT MIN MAX MEAN STDDEV.
 
-frequencies rapportcijfer
-/format notable
-/histogram.
+* Achter /CELLS kan je precies de verschillende statistieken opvragen die je wil hebben. Met /CELLS ALL
+*  kan je alle beschikbare statistieken zien.
 
-MEANS rapportcijfer.
-DESCRIPTIVES rapportcijfer.
 
-* De descriptives tabel in het output venster laat vervolgens het aantal waarden zien (N), de minimumwaarde,
+MEANS rapportcijfer
+  /CELLS COUNT MIN MAX MEAN STDDEV.
+
+* De means tabel in het output venster laat vervolgens het aantal waarden zien (N), de minimumwaarde,
 *  maximumwaarde, gemiddelde (Mean) en de standaarddeviatie (Std. Deviation).
 
 
@@ -309,7 +308,7 @@ DESCRIPTIVES rapportcijfer.
 
 
 
-*                        ###DENK OPDRACHT###.
+*                        ### OPDRACHT###.
 
 * Inspecteer de tabel voor rapportcijfer eens, en hou daarbij in je achterhoofd dat respondenten gevraagd is
 *  om een rapportcijfer tussen de 0 en de 10 te geven.
@@ -330,7 +329,10 @@ DESCRIPTIVES rapportcijfer.
 *  BARCHART of HISTOGRAM toevoegen.
 FREQUENCIES rapportcijfer.
 
-
+* Als je alleen het histogram wil zien zonder de tabel, kan je /FORMAT NOTABLE toevoegen aan de syntax.
+FREQUENCIES rapportcijfer
+  /FORMAT NOTABLE
+  /HISTOGRAM.
 
 
 
@@ -401,7 +403,8 @@ EXAMINE rapportcijfer
 * Inspecteer geboortedatum maar eens met behulp van de commando's voor scale variabelen.
 * Wat valt je op?.
 
-DESCRIPTIVES geboortedatum.
+MEANS geboortedatum
+ /CELLS COUNT MIN MAX MEAN STDDEV.
 
 EXAMINE geboortedatum
  /PLOT BOXPLOT HISTOGRAM.
@@ -420,5 +423,19 @@ EXAMINE geboortedatum
 FREQUENCIES zorgverlener
   /BARCHART.
 
+* Als je mogelijke problemen ziet met deze variabele, denk er dan eens over na hoe je deze zou kunnen
+* oplossen met wat je in deze les geleerd hebt.
 
+
+
+
+
+
+
+
+* Goed om te weten: Het DESCRIPTIVES commando is een snelle manier om count, min, max, mean en stddev
+*  op te vragen. Helaas heeft het veel minder uitbreidingsmogelijkheden dan MEANS. Daarom gebruiken
+*  we zoveel mogelijk het MEANS commando, om daarmee vertrouwd te raken.
+* Descriptives werkt zo:.
+DESCRIPTIVES rapportcijfer.
 
