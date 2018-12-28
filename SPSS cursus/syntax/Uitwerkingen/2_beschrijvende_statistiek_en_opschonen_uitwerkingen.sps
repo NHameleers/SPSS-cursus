@@ -124,6 +124,10 @@ FREQUENCIES naam_van_variabele.
 FREQUENCIES geslacht.
 
 
+
+
+
+
 * Wil je indruk maken op je leidinggevende? Of gewoon zelf de resultaten graag visuaal zien?.
 *  Voeg dan een barchart toe met 1 woord extra.
 FREQUENCIES geslacht
@@ -164,7 +168,7 @@ RECODE geslacht (11=1).
 
 
 * Laten we de frequencies van geslacht opnieuw bekijken om te zien of al onze elven veranderd zijn in mannen.
-  FREQUENCIES geslacht
+FREQUENCIES geslacht
   /BARCHART.
 
 
@@ -211,7 +215,7 @@ FREQUENCIES opleidingsniveau
 RECODE naam_van_variabele (oude_foute_waarde1=nieuwe_correcte_waarde1) (oude_foute_waarde2=nieuwe_correcte_waarde2).
 
 *                     ###BONUSOPDRACHT###
-* RECODE beide incorrecte waarden voor chronisch_ziek met 1 RECODE commando.
+* RECODE beide incorrecte waarden voor chronisch_ziek met 1 RECODE commando (dus tegelijkertijd op 1 regel).
 * De oplossing ziet er dan zo uit.
 
 RECODE chronisch_ziek (10=1) (11=1).
@@ -288,6 +292,11 @@ MISSING VALUES opleidingsniveau (-99).
 * DESCRIPTIVES is net zo simpel als FREQUENCIES, je gebruikt het zo:
 DESCRIPTIVES naam_van_variabele.
 
+frequencies rapportcijfer
+/format notable
+/histogram.
+
+MEANS rapportcijfer.
 DESCRIPTIVES rapportcijfer.
 
 * De descriptives tabel in het output venster laat vervolgens het aantal waarden zien (N), de minimumwaarde,
