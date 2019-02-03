@@ -51,7 +51,7 @@
 
 
 **************** B. DATA OPENEN *****************.
-* De twee commando's hieronder (GET en DATASET NAME) zijn met de volgende vijf stappen gemaakt.
+* De twee commando's hieronder (GET en DATASET NAME) zijn met de volgende stappen gemaakt.
 * 1. Klik linksboven op File --> Open --> Data.
 * 2. Ga naar de 'data' map binnen je spss-cursus map.
 * 3. Selecteer het bestand '2018-12-23_pat_tevr' (NIET dubbelklikken).
@@ -73,7 +73,8 @@ DATASET NAME patient_tevr WINDOW=FRONT.
 * Een kolom is in de data view een variabele (die bijvoorbeeld gelijk staat aan een vraag in je vragenlijst). 
 
 * Variable view (ook wel dictionary of codeboek genoemd).
-* De variable view geeft informatie over je variabelen (zgn. metadata). Deze view geeft dus GEEN informatie over respondenten.
+* De variable view geeft informatie over je variabelen (zgn. metadata).
+* Deze view geeft dus GEEN informatie over respondenten.
 * Een rij in de variable view geeft alle informatie over 1 variabele weer.
 * Een kolom in de variable view staat gelijk aan een kenmerk van een variabele (zoals data type of label/omschrijving).
 
@@ -85,7 +86,8 @@ DATASET NAME patient_tevr WINDOW=FRONT.
 
 *********************** C. DATA OPSLAAN ************************.
 
-* Om te voorkomen dat we per ongeluk het bronbestand overschrijven, slaan we het geopende bestand meteen op onder een nieuwe naam.
+* Om te voorkomen dat we per ongeluk het bronbestand overschrijven, slaan we het geopende bestand
+*  meteen op onder een nieuwe naam.
 * Ook als we dan per ongeluk op Save klikken, wordt het bronbestand in ieder geval niet overschreven.
 
 * Je kan een databestand opslaan met het volgende commando:
@@ -93,11 +95,6 @@ SAVE OUTFILE='schijfletter:\mappen\naam_waaronder_je_bestand_wil_opslaan.sav'.
 
 * Als je de SPSS cursus map op je I-schijf hebt staan, wordt het commando:.
 SAVE OUTFILE='I:\SPSS cursus\SPSS cursus\data\pat_tevr_incl_metadata.sav'.
-
-* Als je de SPSS cursus map op je Desktop/Bureaublad hebt opgeslagen, wordt het commando:.
-* SAVE OUTFILE='C:\Users\voornaam.achternaam\Desktop\pat_tevr_incl_metadata.sav'.
-* Haal in vorige regel het sterretje weg als je het bestand op je Desktop wil opslaan.
-
 
 * Vind je het ingewikkeld om met zo'n adres (pad) van een bestand te werken?
 *  Volg dan de onderstaande stappen om het bestand op te slaan.
@@ -299,3 +296,22 @@ SAVE OUTFILE='I:\SPSS cursus\SPSS cursus\data\pat_tevr_incl_metadata.sav'.
 * Geef het bestand zo nodig een naam.
 * Klik op Save.
 
+
+
+
+
+************************ BRONNEN ONLINE **********************.
+
+*Waar vind je hulp online?.
+
+* Meestal kom ik via het googlen van mijn vraag uit op onderstaande twee sites.
+
+* SPSS-Tutorials.
+* Deze site vind ik het beste voor tips en hulp. Het is ook heel begrijpelijk geschreven en gebruikt voorbeelden met syntax.
+* https://www.spss-tutorials.com/
+
+* De pagina van IBM, maar eigenlijk alleen voor hele specifieke vragen over hoe een commando werkt. Hier kom ik
+*  meestal uit via google. 
+* https://www.ibm.com/support/knowledgecenter/en/SSLVMB_25.0.0/statistics_kc_ddita/spss/product_landing.html
+
+* Vind je het antwoord daar niet, google verder of vraag het aan collega's :).

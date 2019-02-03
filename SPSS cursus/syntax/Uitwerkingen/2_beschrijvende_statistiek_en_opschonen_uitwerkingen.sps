@@ -20,7 +20,7 @@
 * Terwijl jij nog lekker aan het genieten was van je vakantie, is je collega vol goede voornemens
 *  op 2 januari vragenlijsten gaan invoeren. Niet wetende dat jij al begonnen was, heeft ze een nieuw
 *  bestand aangemaakt en 500 vragenlijsten ingevoerd!!.
-* Helaas heeft ze nog geen tijd gehad om het codeboek in te vullen en alle variabelen goed te omschrijven.
+* Helaas heeft ze nog geen tijd genomen om het codeboek in te vullen en alle variabelen goed te omschrijven.
 * Al het werk dat je in de vorige les gedaan hebt, moet je dus weer opnieuw doen!.
 
 
@@ -361,12 +361,6 @@ MISSING VALUES rapportcijfer (-99).
 
 
 
-
-
-
-
-
-
 * Vond je minimum, maximum en gemiddelde wat saai? Of wil je je begeleider verrassen (of verwarren) met heel veel
 * statistieken en figuren? Probeer dan eens het EXAMINE commando.
 EXAMINE rapportcijfer
@@ -383,6 +377,38 @@ EXAMINE rapportcijfer
 *  de respondent die deze extreme waarde heeft. Het casenummer is het nummer dat in de data view helemaal links in de 
 *  blauwe cellen staat.
 
+
+
+
+
+
+
+******************** RECODE INTO ****************************.
+
+* We gaan nu het RECODE commando iets uitbreiden en zien hoe we RECODE kunnen gebruiken om een
+*  NIEUWE VARIABELE aan te maken. Hiervoor voegen we 'INTO' toe aan het commando.
+* Dit is handig als je de originele variabele wil behouden en daarnaast een opgeschoonde of getransformeerde versie
+*  wil toevoegen.
+
+* Om dit te illustreren gaan we van de variabele 'rapportcijfer' een nieuwe variabele met drie categorieen
+*  maken (onvoldoende, voldoende, goed). Als het cijfer onder de 6 is, dan is het onvoldoende, is het tussen de 6
+*  en 7.5 , dan is het voldoende, en 7.5 of hoger is goed. Voor  de nieuwe variabele coderen we onvoldoende als 1,
+*  voldoende als 2 en goed als 3.
+
+RECODE rapportcijfer (0 THRU 5.9 = 1) (6 THRU 7.4 = 2) (7.5 THRU HIGHEST = 3) (ELSE = COPY) INTO rapportcijfer_categorie.
+EXECUTE.
+
+
+* Als je naar de data view kijkt zie je inderdaad een nieuwe variabele met waarden 1, 2 en 3... en 7.45?
+* Dat is niet helemaal goed gegaan. Waarom denk je dat dit fout gaat?
+* Verander bovenstaande syntax zodat dit opgelost wordt.
+* Bekijk het ook eens met een frequentietabel.
+FREQUENCIES rapportcijfer_categorie.
+
+* Als je goed kijkt, zie je dat SPSS wel de waarden -99 heeft overgenomen (omdat we ELSE = COPY hebben meegegeven
+*  in het RECODE commando), maar zich niet realiseert dat deze waarden als missende waarden gezien moeten worden.
+* Dat moeten we dus voor deze nieuwe variabele weer opnieuw aan SPSS vertellen.
+MISSING VALUES rapportcijfer_categorie (-99).
 
 
 
@@ -438,4 +464,5 @@ FREQUENCIES zorgverlener
 *  we zoveel mogelijk het MEANS commando, om daarmee vertrouwd te raken.
 * Descriptives werkt zo:.
 DESCRIPTIVES rapportcijfer.
+
 
