@@ -609,17 +609,6 @@ rapportcijfer >= 0 AND rapportcijfer < 6
 *  maar een nieuwe aanmaken. Deze heet rapportcijfer_categorie_2:.
 DO IF rapportcijfer >= 0 AND rapportcijfer < 6.
 COMPUTE rapportcijfer_categorie_2 = 1.
-ELSE IF zelf_invullen.
-COMPUTE zelf_invullen.
-ELSE IF zelf_invullen.
-COMPUTE zelf_invullen.
-ELSE.
-COMPUTE rapportcijfer_categorie_2 = -99.
-END IF.
-
-
-DO IF rapportcijfer >= 0 AND rapportcijfer < 6.
-COMPUTE rapportcijfer_categorie_2 = 1.
 ELSE IF rapportcijfer >= 6 AND rapportcijfer < 7.5.
 COMPUTE rapportcijfer_categorie_2 = 2.
 ELSE IF rapportcijfer >= 7.5 AND rapportcijfer <= 10.

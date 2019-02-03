@@ -57,7 +57,7 @@ VARIABLE LEVEL opleidingsniveau(ORDINAL).
 
 RENAME VARIABLES gebdatum = geboortedatum.
 
-SAVE OUTFILE='data\pat_tevr_incl_metadata.sav'.
+
 
 **********************************************************************************.
 
@@ -130,7 +130,7 @@ EXAMINE geboortedatum
 
 DESCRIPTIVES rapportcijfer.
 
-SAVE OUTFILE='data\pat_tevr_incl_metadata.sav'.
+
 
 **********************************************************************************.
 
