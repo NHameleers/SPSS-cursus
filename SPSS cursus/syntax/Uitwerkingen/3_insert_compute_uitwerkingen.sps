@@ -132,9 +132,9 @@ OUTPUT NEW.
 set seed 1.
 
 * Aanmaken lengte variabele. Mannen gemiddeld 180 cm, vrouwen gemiddeld 167.
-DO IF geslacht = 0.
+DO IF geslacht = 1.
 COMPUTE lengte=RND(RV.NORMAL(180, 10)).
-ELSE IF geslacht = 1.
+ELSE IF geslacht = 0.
 COMPUTE lengte=RND(RV.NORMAL(167, 8)).
 END IF.
 
@@ -145,9 +145,9 @@ MEANS lengte BY geslacht.
 * Aanmaken gewicht variabele. Mannen gemiddeld 84 kg, vrouwen gemiddeld 70.
 DO IF MISSING(opleidingsniveau).
 COMPUTE gewicht = -99.
-ELSE IF geslacht = 0.
-COMPUTE gewicht=RND(RV.NORMAL(84, 20)).
 ELSE IF geslacht = 1.
+COMPUTE gewicht=RND(RV.NORMAL(84, 20)).
+ELSE IF geslacht = 0.
 COMPUTE gewicht=RND(RV.NORMAL(70, 20)).
 END IF.
 
@@ -615,7 +615,7 @@ ELSE IF rapportcijfer >= 7.5 AND rapportcijfer <= 10.
 COMPUTE rapportcijfer_categorie_2 = 3.
 ELSE.
 COMPUTE rapportcijfer_categorie_2 = -99.
-END IF.
+END IF.    
 
 * Alternatief. Let op dat als je met DO IF missende waarden in je voorwaarde gebruikt, je dit
 *  het beste als eerste kan doen (dus bij DO IF, en niet bij ELSE IF).

@@ -1,0 +1,11 @@
+respondentnummer,geslacht,chronisch_ziek,gebdatum,zorgverlener,rapportcijfer,opleidingsniveau
+1,0,1,1946-04-27,Huisarts,9.0,2
+2,1,0,1960-09-18,Huisarts,10.0,4
+3,1,1,1950-10-01,huisarts,9.0,3
+4,0,0,1986-12-21,specialist,5.0,1
+5,0,1,1981-08-03,Specialist,7.0,13
+6,0,1,1989-11-22,Fysio,7.45,1
+7,-99,0,1981-02-14,specialist,9.0,3
+8,1,1,1940-11-16,Specialist,6.0,3
+9,0,-99,1993-11-30,huisarts,7.0,3
+10,11,1,1955-01-14,praktijkondersteuner,5.5,1

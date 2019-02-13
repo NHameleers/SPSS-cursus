@@ -1,6 +1,7 @@
-﻿
+﻿* Encoding: UTF-8.
 
-* Encoding: UTF-8.
+
+* Encoding: .
 
 *********************** SPSS CURSUS ***********************.
 *** Les 3.
@@ -23,12 +24,6 @@
 * 3. Weet je nog hoe het RECODE commando werkte?.
 * 4. En ook hoe je het RECODE commando kan gebruiken om een nieuwe variabele te maken?.
 
-
-* Antwoorden:
-* 1. FREQUENCIES
-* 2. MEANS, DESCRIPTIVES, EXAMINE, soms FREQUENCIES.
-* 3. RECODE naam_van_variabele (oude_foute_waarde=nieuwe_correcte_waarde).
-* 4. RECODE naam_van_variabele (oude_foute_waarde=nieuwe_correcte_waarde) INTO naam_van_nieuwe_variabele.
 
 **************************************************************************************.
 
@@ -72,6 +67,7 @@ CD 'I:\SPSS cursus\SPSS cursus'.
 * Als je syntax via het menu maakt, met Paste, dan plakt SPSS wel weer het absolute pad in de syntax.
 * Je moet dit dan zelf aanpassen naar het relatieve pad.
 * Een voorbeeld hiervan zal je zien als je de 'Extra opdrachten: Hacker edition' maakt onderaan dit bestand.
+
 
 
 
@@ -132,9 +128,9 @@ OUTPUT NEW.
 set seed 1.
 
 * Aanmaken lengte variabele. Mannen gemiddeld 180 cm, vrouwen gemiddeld 167.
-DO IF geslacht = 0.
+DO IF geslacht = 1.
 COMPUTE lengte=RND(RV.NORMAL(180, 10)).
-ELSE IF geslacht = 1.
+ELSE IF geslacht = 0.
 COMPUTE lengte=RND(RV.NORMAL(167, 8)).
 END IF.
 
@@ -145,9 +141,9 @@ MEANS lengte BY geslacht.
 * Aanmaken gewicht variabele. Mannen gemiddeld 84 kg, vrouwen gemiddeld 70.
 DO IF MISSING(opleidingsniveau).
 COMPUTE gewicht = -99.
-ELSE IF geslacht = 0.
-COMPUTE gewicht=RND(RV.NORMAL(84, 20)).
 ELSE IF geslacht = 1.
+COMPUTE gewicht=RND(RV.NORMAL(84, 20)).
+ELSE IF geslacht = 0.
 COMPUTE gewicht=RND(RV.NORMAL(70, 20)).
 END IF.
 
@@ -195,7 +191,7 @@ EXECUTE.
 
 * En lijkt ook alles goed als we de gemiddelden van de twee variabelen naast elkaar zetten?.
 MEANS lengte lengte_in_m. 
-
+MEANS lengte. 
 
 
 
@@ -272,15 +268,20 @@ EXECUTE.
 *                            ###OPDRACHT###.
 
 * Gebruik het COMPUTE commando om een variabele 'totale_zorgkosten' te maken.
-* Totale zorgkosten is de optelsom van medicijnkosten, huisartskosten, specialistkosten en huisarts_inschrijftariefkosten.
+*
+ Totale zorgkosten is de optelsom van medicijnkosten, huisartskosten, specialistkosten en huisarts_inschrijftariefkosten.
 
 * Probeer meer dan 1 oplossing te vinden.
 
 
+COMPUTE totale_zorgkosten = medicijnkosten + huisartskosten + specialistkosten + huisarts_inschrijftariefkosten.
 
+COMPUTE totale_zorgkosten = SUM(medicijnkosten + huisartskosten + specialistkosten + huisarts_inschrijftariefkosten).
+COMPUTE totale_zorgkosten = SUM(medicijnkosten, huisartskosten, specialistkosten, huisarts_inschrijftariefkosten).
 
+COMPUTE totale_zorgkosten_sum = SUM(medicijnkosten TO huisarts_inschrijftariefkosten).
 
-
+MEANS totale_zorgkosten totale_zorgkosten_sum.
 
 
 
@@ -304,7 +305,7 @@ EXECUTE.
 * Dit is een nominale variabele.
 * Inspecteer de zorgverlener variabele nogmaals en kijk wat je opvalt.
 
-
+FREQUENCIES zorgverlener.
 
 
 
@@ -874,6 +875,11 @@ MEANS zorgkostenvergoeding BY chronisch_ziek.
 *  via google.
 
 
+* 0. 
+* Zie de oefening waarin we zorgverlener_kopie opschonen.
+* Kijk of je het volgende kan doen:.
+* Verander 'fysio' in 'fysiotherapeut', maar alleen als de lengte van het woord 5 tekens of korter is.
+
 
 * 1.
 * Maak een variabele waarmee je kan checken of altijd_laag en altijd_hoog nooit tegelijkertijd 1 zijn.
@@ -982,6 +988,7 @@ die 1 is als geslacht en chronisch_ziek allebei tegelijkertijd een missende waar
 * Kijk eens wat er gebeurt als je bij zorgverlener A17 invult.
 * Je krijgt als het goed is een (niet erg duidelijk aangekondigde) waarschuwing in de output.
 * Let daarbij op wat er in de output achter 'Variable: zorgverlener...' staat.
+
 
 
 
