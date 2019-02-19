@@ -613,8 +613,6 @@ ELSE IF rapportcijfer >= 6 AND rapportcijfer < 7.5.
 COMPUTE rapportcijfer_categorie_2 = 2.
 ELSE IF rapportcijfer >= 7.5 AND rapportcijfer <= 10.
 COMPUTE rapportcijfer_categorie_2 = 3.
-ELSE.
-COMPUTE rapportcijfer_categorie_2 = -99.
 END IF.    
 
 * Alternatief. Let op dat als je met DO IF missende waarden in je voorwaarde gebruikt, je dit

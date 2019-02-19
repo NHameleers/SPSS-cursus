@@ -609,8 +609,6 @@ ELSE IF zelf_invullen.
 COMPUTE zelf_invullen.
 ELSE IF zelf_invullen.
 COMPUTE zelf_invullen.
-ELSE.
-COMPUTE rapportcijfer_categorie_2 = -99.
 END IF.
 
 
