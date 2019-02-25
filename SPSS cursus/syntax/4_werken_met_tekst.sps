@@ -274,13 +274,11 @@ EXECUTE.
 
 
 
-
 * Ons databestand is een beetje rommeltje geworden met heel veel variabelen, terwijl we eigenlijk alleen
 *  voornaam en achternaam wilden maken.
 
 * Laten we eerst wat overbodige variabelen verwijderen.
-DELETE VARIABLES positie_eerste_komma
-    tekens_voor_komma
+DELETE VARIABLES positie_eerste_komma  tekens_voor_komma
     achternaam_in_1_keer
     startpositie_voornaam
     positie_eerste_haakje
@@ -365,6 +363,52 @@ etc.
 *  in je data te zetten.
 * Maak vervolgens alle variabelen opnieuw aan (achternaam t/m afdeling) zonder dat
 * tussenvariabelen in je data zichtbaar worden.
+
+
+
+
+
+
+
+
+
+
+************* EXTRA OEFENING DIE BEDACHT WERD TIJDENS DE LES: INITIALEN *****************.
+
+* Tijdens de les wilde iemand ook graag een variabele maken met initialen. Dat zijn we dan ook gaan doen.
+
+* We maken eerst een nieuwe variabele hiervoor aan.
+STRING initialen (A15).
+
+* Voor de tweede kamerleden was de voornaam eigenlijk al gelijk aan de initiaal.
+* Voor alle andere emailadressen was er een voornaam.
+* De beslisregel die bedacht werd voor het invullen van de variabele initialen was als volgt:
+* "Als het tweede teken in voornaam GEEN punt is, dan zijn de initialen de eerste letter van die naam.
+* anders (wanneer dat tweede teken wel een punt is), dan zijn de initialen gelijk aan de voornaam (dan gaat
+* het immers om een tweede kamerlid en daar bestaat de voornaam gewoon uit initialen).
+
+* We maakten hiervoor eerst een variabele met het teken dat op de tweede plek in voornaam staat.
+STRING dat_wat_op_de_tweede_plaats_staat (A1).
+COMPUTE dat_wat_op_de_tweede_plaats_staat = CHAR.SUBSTR(voornaam, 2, 1).
+EXECUTE.
+
+* Vervolgens checken we bij DO IF of dat teken geen punt is (NE staat voor NOT EQUAL).
+* Als het geen punt is, dan vullen we bij initialen de eerste letter van de voornaam in (CHAR.SUBSTR).
+* En zetten daar een punt achter (met CONCAT).
+* Voor alle andere rijen (ELSE) (in dit geval zijn dat de kamerleden),
+* kopieren we de voornaam en vullen deze in bij initialen (COMPUTE).
+DO IF CHAR.SUBSTR(voornaam, 2, 1) NE ".". 
+COMPUTE initialen = CHAR.SUBSTR(voornaam, 1, 1).
+COMPUTE initialen = CONCAT(initialen, ".").
+ELSE IF CHAR.SUBSTR(voornaam, 2, 1) EQ ".".
+COMPUTE initialen = voornaam.
+END IF.
+EXECUTE.
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 ﻿* Encoding: UTF-8.
 
-
+**** LES 5: LOOPS (DO REPEAT) EN HERHALING ***.
 
 * Stel de juiste werkdirectory in.
 CD "I:\SPSS cursus\SPSS cursus".
