@@ -337,22 +337,26 @@ FREQUENCIES VA1 TO VA10.
     0 t/m 10 en 
     98 ("geen mening").
 
-COMPUTE VA1 = NUMBER(VA_Zorgstandaard1, F2.0).
+COMPUTE VB1 = NUMBER(VB_Zorgstandaard1, F2.0).
 
-DO IF CHAR.INDEX(VA_Zorgstandaard1, "10") > 0.
-COMPUTE VA1 = 10.
-ELSE IF CHAR.INDEX(VA_Zorgstandaard1, "0") > 0.
-COMPUTE VA1 = 0.
+DO IF CHAR.INDEX(VB_Zorgstandaard1, "10") > 0.
+COMPUTE VB1 = 10.
+ELSE IF CHAR.INDEX(VB_Zorgstandaard1, "0") > 0.
+COMPUTE VB1 = 0.
 END IF.
 
-RECODE VA_Zorgstandaard1 ("Niet van toepassing", "Nicht zutreffend", "Not applicable", "Non applicable", "No aplicable" = 96) INTO VA1.
-RECODE VA_Zorgstandaard1 ("Weet ik niet", "Verstehe ich nicht", "I do not understand", "Je ne comprends pas", "No entiendo" = 97) INTO VA1.
+RECODE VB_Zorgstandaard1 ("Geen mening",
+    "Keine Meinung",
+    "No opinion",
+    "Pas d’opinion",
+    "sin opinion",
+    "Ingen Ã¥sikt" = 98) INTO VB1.
 
-VALUE LABELS VA1
-96 "Niet van toepassing"
-97 "Weet ik niet".
 
-FREQUENCIES VA1.
+VALUE LABELS VB1
+98 "Geen mening".
+
+FREQUENCIES VB1.
 
 
 
@@ -365,39 +369,38 @@ FREQUENCIES VA1.
 
 * Hieronder staat de syntax die we gebruikten om VA_Zorgstandaard1 t/m VA_Zorgstandaard10
 * om te zetten in VA1 t/m VA10.
-* Pas de syntax hieronder dusdanig aan zodat je hem kan gebruiken om VB_Zorgstandaard1 t/m VB_Zorgstandaard10
+* Pas deze syntax dusdanig aan zodat je hem kan gebruiken om VB_Zorgstandaard1 t/m VB_Zorgstandaard10
 * om te zetten in VB1 t/m VB10.
 
 * Wees lui, gebruik zoveel mogelijk je antwoord van opdracht 1.
 * Let er wel even op dat het VALUE LABELS en het FREQUENCIES commando pas na END REPEAT komen.
 
-* Verwijder eerst de variabele die je bij opdracht 1 hebt aangemaakt, anders geeft de
-*  DO REPEAT een error.
 DELETE VARIABLES VB1.
 
-* syntax hieronder moet aangepast worden.
-
-DO REPEAT tekstvar = VA_Zorgstandaard1 TO VA_Zorgstandaard10 / 
-                   numvar = VA1 TO VA10.
+DO REPEAT tekstvar = VB_Zorgstandaard1 TO VB_Zorgstandaard10 / 
+                   numvar = VB1 TO VB10.
     
     COMPUTE numvar = NUMBER(tekstvar, F2.0).
-    
+
     DO IF CHAR.INDEX(tekstvar, "10") > 0.
     COMPUTE numvar = 10.
     ELSE IF CHAR.INDEX(tekstvar, "0") > 0.
     COMPUTE numvar = 0.
     END IF.
     
-    RECODE tekstvar ("Niet van toepassing", "Nicht zutreffend", "Not applicable", "Non applicable", "No aplicable" = 96) INTO numvar.
-    RECODE tekstvar ("Weet ik niet", "Verstehe ich nicht", "I do not understand", "Je ne comprends pas", "No entiendo" = 97) INTO numvar.
-    
+    RECODE tekstvar ("Geen mening",
+        "Keine Meinung",
+        "No opinion",
+        "Pas d’opinion",
+        "sin opinion",
+        "Ingen Ã¥sikt" = 98) INTO numvar.
+
 END REPEAT PRINT.
 
-VALUE LABELS VA1 TO VA10
-96 "Niet van toepassing"
-97 "Weet ik niet".
+VALUE LABELS VB1 TO VB10
+98 "Geen mening".
 
-FREQUENCIES VA1 TO VA10.
+FREQUENCIES VB1 TO VB10.
 
 
 
