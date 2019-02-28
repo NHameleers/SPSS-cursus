@@ -5,9 +5,14 @@ CD "I:\SPSS cursus\SPSS cursus".
 
 
 
-***** OPEN DE DATASET *******.
+***** DE TITANIC DATASET *******.
 
-* Run alle syntax t/m het derde VALUE LABELS commando.
+* Vandaag werken we met een deel van de Titanic dataset.
+* Deze dataset bevat informatie over een deel van de passagiers die aanwezig waren
+*  op de Titanic.
+
+
+* Run alle syntax t/m het derde VALUE LABELS commando (regel 100) om verder te gaan.
 
 
 * Nieuwsgierig over de dataset? Kijk dan eens hier:
