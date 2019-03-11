@@ -115,6 +115,8 @@ OUTPUT NEW.
 
 
 
+
+
 ******************* Extra voorbeelddata maken ***************.
 
 * In onze voorbeelddata zitten helaas geen lengte en gewicht, maar deze zijn wel uitermate geschikt als voorbeeld in

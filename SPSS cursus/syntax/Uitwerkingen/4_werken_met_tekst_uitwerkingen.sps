@@ -320,12 +320,11 @@ EXECUTE.
 * CHAR.SUBSTR.
 STRING email_adres (A75).
 VARIABLE LABELS email_adres "Het hele emailadres".
-* jouw syntax komt hieronder...
-
-
-
-
-
+COMPUTE #startpositie_email = CHAR.INDEX(emailzooitje, "<") +1.
+COMPUTE #eindpositie_email = CHAR.INDEX(emailzooitje, ">").
+COMPUTE #aantal_tekens_email = #eindpositie_email - #startpositie_email.
+COMPUTE email_adres= CHAR.SUBSTR(emailzooitje, #startpositie_email, #aantal_tekens_email).
+EXECUTE.
 
 
 
@@ -337,12 +336,22 @@ VARIABLE LABELS email_adres "Het hele emailadres".
 * CHAR.INDEX.
 STRING email_domein (A75).
 VARIABLE LABELS email_domein "Het domein van het emailadres, dus alles achter apestaartje".
-* jouw syntax komt hieronder...
- 
+COMPUTE #startpositie_domein = CHAR.INDEX(email_adres, "@") +1.
+COMPUTE #eindpositie_domein = CHAR.LENGTH(email_adres). 
+COMPUTE #aantal_tekens_domein = #eindpositie_domein - #startpositie_domein + 1.
+COMPUTE email_domein = CHAR.SUBSTR(email_adres, #startpositie_domein, #aantal_tekens_domein).
+EXECUTE.
+
+
+
 * Extraheer de afdeling uit emailzooitje.
 STRING afdeling (A10).
 VARIABLE LABELS afdeling "De afdeling. Staat meestal tussen haakjes (bijv. HSR of SOCMED)".
-* jouw syntax komt hieronder...
+COMPUTE #startpositie_afdeling = CHAR.INDEX(emailzooitje, "(")+1.
+COMPUTE #eindpositie_afdeling = CHAR.INDEX(emailzooitje, ")").
+COMPUTE #aantal_tekens_afdeling = #eindpositie_afdeling - #startpositie_afdeling.
+COMPUTE afdeling = CHAR.SUBSTR(emailzooitje, #startpositie_afdeling,  #aantal_tekens_afdeling).
+EXECUTE.
 
 
 * Wil je iets meer uitdaging? Probeer dan eens om afdeling weer te geven in Titlecase.
@@ -353,6 +362,20 @@ Socmed
 Vvd
 Sp
 etc.
+STRING afdeling_titlecase (A10).
+VARIABLE LABELS afdeling "De afdeling in titlecase (bijv. Hsr of Socmed)".
+* De eerste letter selecteren we met de CHAR.SUBSTR() functie,
+*  en maken we uppercase met de UPCASE() functie.
+STRING #eerste_letter_uppercase(A1).
+COMPUTE #eerste_letter_uppercase = UPCASE(CHAR.SUBSTR(afdeling, 1, 1)).
+* De overige letters selecteren we met CHAR.SUBSTR(), startpositie is 2e letter, aantal tekens is
+*  de lengte van afdeling min de eerste letter. Deze overige letters maken we lowercase met de LOWER()
+*  functie.
+STRING #overige_letters_lowercase (A9).
+COMPUTE #overige_letters_lowercase = LOWER(CHAR.SUBSTR(afdeling, 2, LENGTH(afdeling)-1)).
+* Vervolgens plakken we deze twee stukken aan elkaar.
+COMPUTE afdeling_titlecase = CONCAT(#eerste_letter_uppercase, #overige_letters_lowercase).
+EXECUTE.
 
 
 
