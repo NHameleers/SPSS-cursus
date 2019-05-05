@@ -110,6 +110,8 @@ EXECUTE.
 
 
 
+
+
 ************ EEN BEPAALD STUK UIT DATUM HALEN:  XDATE.STUK() *****************.
 * Met XDATE kan je een stuk/component uit een datum halen. Dit kan bijvoorbeeld de maand zijn, het jaar, of een
 * van vele andere opties. Kijk maar eens bij Transform --> Compute variable --> Function groups --> Date Extraction.
@@ -128,6 +130,20 @@ FORMATS geboortejaar (F4.0).
 COMPUTE geboortemaand = XDATE.MONTH(geboortedatum).
 EXECUTE. 
 FORMATS geboortemaand (F2.0).
+
+
+COMPUTE geboortedag = XDATE.MDAY(geboortedatum).
+EXECUTE. 
+FORMATS geboortedag (F2.0).
+
+
+
+* TODO: verder uitwerken.
+* Hoeveel mensen zijn op de 20e geboren in maart of april?
+* Hoeveel mensen zijn op 20 maart geboren of in april?. 
+COMPUTE jarig_op_20_maart = geboortedag = 20 AND (geboortemaand = 3 OR geboortemaand = 4).
+FREQUENCIES jarig_op_20_maart.
+
 
 
 
@@ -174,6 +190,11 @@ EXECUTE.
 
 
 
+
+
+
+
+
 ******************* EEN DATUM INSTELLEN ALS MISSENDE WAARDE ********************.
 * Bij numerieke variabelen kunnen we een nummer kiezen dat als missing gezien wordt (bijv. -99, 999, 888 etc).
 * Hoe gaat dat bij datums? In onze dataset lijkt een aantal keren 1 jan 1800 voor te komen.
@@ -210,11 +231,17 @@ FREQUENCIES geboortedatum.
 
 * 1. Maak een variabele aan genaamd 'nu', die de tijd op dit moment weergeeft.
 
+
 * 2. Hoeveel seconden zijn verstreken tussen 14 oktober 1582 en nu?
+
+
 
 * 3. Reken uit hoeveel maanden zijn verstreken tussen T0_datum en vandaag.
 
+
 * 4. Maak een variabele aan genaamd T2_datum. T2 is anderhalf jaar na T0. Gebruik hiervoor de DATESUM functie.
+
+
 
 * 5. Hoe oud is de oudste persoon in de dataset. Kan je een manier bedenken om uit te vinden hoe oud deze persoon
 *     vandaag is, uitgedrukt in maanden?.

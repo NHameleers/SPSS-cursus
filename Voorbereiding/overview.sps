@@ -87,9 +87,7 @@ editing data such as computing sums and means over columns or rows of data. SPSS
 
 * Iets meer aandacht voor het maken van tabellen? MEANS BY? CROSSTABS? CUSTOM TABLES?.
 
- * 7.       Unit of analysis, aggregeren (, custom tables?)
-8.       Bestanden koppelen (merge, join, match)
-9.       Datum nog niet geprikt: Masterscript en organisatie daarvan. Hele opschoning, analyse en output met 1 druk op de knop, maar wel verdeeld over verschillende syntaxbestanden per onderwerp.
+
  
  * Voorbeelden van meer uitdagende opdrachten/onderwerpen:
 1.       In plaats van .sav bestanden ook .csv en .xlsx bestanden openen via syntax.
@@ -97,3 +95,11 @@ editing data such as computing sums and means over columns or rows of data. SPSS
 3.       Logical operators (AND, OR, NOT), comparison operators (>, >=, <, <=, =, ~=), combinaties daarvan en operator precedence (ofwel: waar moet ik wel/geen haakjes zetten)
 4.       IF condities voor meerdere variabelen tegelijk.
  * 5.       Testen of bepaalde tekst voorkomt in variabele. Regular expressions (patronen in tekst herkennen).
+
+
+* Vervolgsessies:
+
+* Aggregeren.
+* Koppelen.
+* Aggreren en koppelen samen/achtereenvolgens. Extra oefenen.
+* Masterscript en organisatie daarvan. Hele opschoning, analyse en output met 1 druk op de knop, maar wel verdeeld over verschillende syntaxbestanden per onderwerp.
